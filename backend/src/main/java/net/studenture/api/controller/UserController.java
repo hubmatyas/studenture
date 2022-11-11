@@ -1,16 +1,25 @@
 package net.studenture.api.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import net.studenture.api.controller.body.UserCreate;
+import net.studenture.api.entities.User;
+import net.studenture.api.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/test")
-public class TestController {
+@RequestMapping("/api/user")
+public class UserController {
 
-    @GetMapping("hello")
-    public String findUser() {
-        return "Hello";
+    private final UserService userService;
+
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+    @PostMapping("/create")
+    public User createUser(@RequestBody UserCreate userCreate) {
+        User user = userService.createUser(userCreate);
+        return user;
     }
 
 }

@@ -1,0 +1,2 @@
+CREATE USER:
+curl -X POST http://localhost:8080/api/user/create -H "Content-Type: application/json" -d '{"name": "Peter Box", "email": "peter@seznam.cz", "password": "test1234"}'
