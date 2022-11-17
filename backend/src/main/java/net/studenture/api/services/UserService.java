@@ -28,9 +28,9 @@ public class UserService {
         }
     }
 
-    public User createUser(final UserCreate userCreate) {
-        User user = new User(userCreate.getName(), userCreate.getEmail(), userCreate.getPassword());
-        userRepository.save(user);
-        return user;
-    }
+   // public User createUser(final UserCreate userCreate) {
+      //  User user = new User(userCreate.getName(), userCreate.getEmail(), userCreate.getPassword());
+      //  userRepository.save(user);
+      //  return user;
+  //  }
 }

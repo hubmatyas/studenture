@@ -1,65 +1,66 @@
 package net.studenture.api.config;
 
 import net.bytebuddy.asm.Advice;
+import net.studenture.api.entities.Role;
+import net.studenture.api.entities.User;
+import net.studenture.api.repositories.UserGoogleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
+import org.springframework.boot.autoconfigure.security.oauth2.resource.PrincipalExtractor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.preauth.x509.X509PrincipalExtractor;
+
+import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig {
-    //extends WebSecurityConfigurerAdapter
+@EnableOAuth2Sso
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     //nefunguje
     // @Autowired
     // private DataSource dataSource;
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests((requests) -> requests
-                        .antMatchers("/", "/home").permitAll()
-                        .anyRequest().authenticated()
-                )
-                .formLogin((form) -> form
-                        .loginPage("/login")
-                        .permitAll()
-                )
-                .logout((logout) -> logout.permitAll());
 
-        return http.build();
+    //google authorization
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .mvcMatchers("/").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .csrf().disable();
     }
 
     @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails user =
-                User.withDefaultPasswordEncoder()
-                        .username("user")
-                        .password("password")
-                        .roles("USER")
-                        .build();
+    public PrincipalExtractor principalExtractor (UserGoogleRepository userGoogleRepository){
+        return map -> {
+            String id = (String) map.get("sub");
+           // User user = userGoogleRepository.findById(id).orElseGet(() -> {
+                User newUser = new User();
+                newUser.setId(id);
+                newUser.setName((String) map.get("name"));
+                newUser.setEmail((String) map.get("email"));
+                newUser.setRoles(Collections.singleton(Role.USER));
+                System.out.println(newUser);
+                return newUser;
+            //ukladat do DB - nefunguje
+           // });
+            //return userGoogleRepository.save(user);
 
-        return new InMemoryUserDetailsManager(user);
+        };
     }
 
-    //ukladat do DB - nefunguje
-    //@Override
-    //protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-    //auth.jdbcAuthentication()
-    //.dataSource(dataSource)
-    //.passwordEncoder(NoOpPasswordEncoder.getInstance())
-    // .usersByUsernameQuery("select name,password from user where name=?")
-    // .authoritiesByUsernameQuery("select u.name,ur.roles from user inner join user_role ur on u.id=ur.userId where u.name=?");
-    //}
 
 }
