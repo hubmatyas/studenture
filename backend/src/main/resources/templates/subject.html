@@ -1,0 +1,73 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="sk">
+<!doctype html>
+<meta charset="utf-8"/>
+
+
+<head>
+    <title>Subject List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<p>Click <a th:href="@{/home}">here</a> to return.</p>
+
+</div>
+</tr>
+
+
+<h2>Subjects</h2>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Guarant</th>
+            <th>Goal</th>
+            <th>Description</th>
+            <th>Language</th>
+            <th>Degree</th>
+            <th>Credits</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="subject : ${list}">
+            <td th:text="${subject.name}">1</td>
+            <td th:text="${subject.guarant}"></td>
+            <td th:text="${subject.goal}"></td>
+            <td th:text="${subject.description}"></td>
+            <td th:text="${subject.language}"></td>
+            <td th:text="${subject.degree}"></td>
+            <td th:text="${subject.credits}"></td>
+            <td><a th:href="@{remove/{id}(id=${subject.id})}" class="btn btn-danger btn-sm mb-3">Delete</a></td>
+        </tr>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<div>
+    <h1>Add a Subject</h1>
+    <form action="#" th:action="@{/subject/add}" th:object="${subject}" th:method="post">
+        <label for="name">Subject Name </label>
+        <input type="text" th:field="*{name}" id="name" placeholder="name">
+        <label for="guarant">Guarant </label>
+        <input type="text" th:field="*{guarant}" id="guarant" placeholder="guarant">
+        <label for="goal">Goal </label>
+        <input type="text" th:field="*{goal}" id="goal" placeholder="goal">
+        <label for="description">description </label>
+        <input type="text" th:field="*{description}" id="description" placeholder="description">
+        <label for="language">language </label>
+        <input type="text" th:field="*{language}" id="language" placeholder="language">
+        <label for="degree">degree </label>
+        <input type="text" th:field="*{degree}" id="degree" placeholder="degree">
+        <label for="degree">credits </label>
+        <input type="text" th:field="*{credits}" id="credits" placeholder="credits">
+
+        <input type="submit" value="Create Subject">
+    </form>
+</div>
+
+</body>
+
+</html>

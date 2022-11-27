@@ -21,17 +21,21 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.preauth.x509.X509PrincipalExtractor;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.Driver;
 import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
 @EnableOAuth2Sso
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    //nefunguje
-    // @Autowired
-    // private DataSource dataSource;
+   @Autowired
+    UserGoogleRepository userGoogleRepository;
 
+    //@Autowired
+    //private DataSource dataSource;
 
     //google authorization
     @Override
@@ -44,20 +48,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     }
 
     @Bean
-    public PrincipalExtractor principalExtractor (UserGoogleRepository userGoogleRepository){
+    public PrincipalExtractor principalExtractor(UserGoogleRepository userGoogleRepository) {
         return map -> {
             String id = (String) map.get("sub");
-           // User user = userGoogleRepository.findById(id).orElseGet(() -> {
-                User newUser = new User();
-                newUser.setId(id);
-                newUser.setName((String) map.get("name"));
-                newUser.setEmail((String) map.get("email"));
-                newUser.setRoles(Collections.singleton(Role.USER));
-                System.out.println(newUser);
-                return newUser;
-            //ukladat do DB - nefunguje
-           // });
-            //return userGoogleRepository.save(user);
+
+            User user = userGoogleRepository.findById(id).orElseGet(() -> {
+            User newUser = new User();
+            newUser.setId(id);
+            newUser.setName((String) map.get("name"));
+            newUser.setEmail((String) map.get("email"));
+            newUser.setRole(String.valueOf(Role.USER));
+            //newUser.setRoles(Collections.singleton(Role.USER));
+            System.out.println(newUser);
+            return newUser;
+
+             });
+            return userGoogleRepository.save(user);
 
         };
     }

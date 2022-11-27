@@ -8,6 +8,4 @@ create table user
     constraint email
         unique (email)
 )
-    engine = InnoDB
-    collate = utf8mb4_0900_ai_ci;
 
