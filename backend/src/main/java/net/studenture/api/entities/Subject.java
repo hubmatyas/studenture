@@ -9,6 +9,8 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,24 +32,27 @@ public class Subject {
     private Long id;
 
     @Column(name = "name", nullable = false)
-    @Size(min=2, max=50)
+    @Size(min = 2, max = 50)
     private String name;
 
     @Column(name = "guarant")
     private String guarant;
 
-    @Column(name = "credits",nullable = false)
-    @Min(3)@Max(20)
+    @Column(name = "credits", nullable = false)
+    @Min(3)
+    @Max(20)
     private int credits = 20;
 
     @Column(name = "goal")
     private String goal;
 
-    @Column(name = "degree")
-    private String degree = String.valueOf(Degree.BC);
+    @Column(name = "degree", columnDefinition = "ENUM('BC', 'MGR)")
+    @Enumerated(EnumType.STRING)
+    private Degree degree = Degree.BC;
 
-    @Column(name = "language")
-    private String language = String.valueOf(Language.CZ);
+    @Column(name = "language", columnDefinition = "ENUM('CZ', 'EN)")
+    @Enumerated(EnumType.STRING)
+    private Language language = Language.CZ;
 
     @Column(name = "description")
     private String description;
@@ -56,8 +61,9 @@ public class Subject {
         BC,
         MGR
     }
+
     public enum Language {
-        AJ,
+        EN,
         CZ
     }
 
