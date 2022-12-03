@@ -17,10 +17,10 @@ public class UserController {
         this.userService = userService;
     }
 
-   // @PostMapping("/create")
-    //public User createUser(@RequestBody UserCreate userCreate) {
-      //  User user = userService.createUser(userCreate);
-        //return user;
-   // }
+    @PostMapping("/create")
+    public User createUser(@RequestBody UserCreate userCreate) {
+        User user = userService.createUser(userCreate);
+        return user;
+    }
 
 }

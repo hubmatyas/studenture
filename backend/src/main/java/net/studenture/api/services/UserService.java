@@ -2,6 +2,7 @@ package net.studenture.api.services;
 
 import java.util.List;
 import java.util.Optional;
+
 import net.studenture.api.controller.body.UserCreate;
 import net.studenture.api.entities.User;
 import net.studenture.api.repositories.UserRepository;
@@ -28,9 +29,9 @@ public class UserService {
         }
     }
 
-   // public User createUser(final UserCreate userCreate) {
-      //  User user = new User(userCreate.getName(), userCreate.getEmail(), userCreate.getPassword());
-      //  userRepository.save(user);
-      //  return user;
-  //  }
+    public User createUser(final UserCreate userCreate) {
+        User user = new User(userCreate.getName(), userCreate.getEmail(), userCreate.getPassword());
+        userRepository.save(user);
+        return user;
+    }
 }

@@ -1,30 +1,23 @@
 package net.studenture.api.config;
 
-import net.bytebuddy.asm.Advice;
 import net.studenture.api.entities.Role;
 import net.studenture.api.entities.User;
 import net.studenture.api.repositories.UserGoogleRepository;
+import net.studenture.api.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.PrincipalExtractor;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.preauth.x509.X509PrincipalExtractor;
-
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.Driver;
-import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
@@ -32,10 +25,10 @@ import java.util.Collections;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
    @Autowired
-    UserGoogleRepository userGoogleRepository;
+   UserGoogleRepository userGoogleRepository;
 
-    //@Autowired
-    //private DataSource dataSource;
+    @Autowired
+    UserRepository userRepository;
 
     //google authorization
     @Override
@@ -61,11 +54,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             //newUser.setRoles(Collections.singleton(Role.USER));
             System.out.println(newUser);
             return newUser;
-
              });
             return userGoogleRepository.save(user);
 
         };
+    }
+
+    //login autorization
+
+
+    @Override
+    @Bean
+    public UserDetailsService userDetailsService() {
+        UserDetails user =
+                org.springframework.security.core.userdetails.User.builder()
+                        .username("user")
+                        .password("password")
+                        .roles("USER")
+                        .build();
+
+        return new InMemoryUserDetailsManager(user);
     }
 
 

@@ -25,20 +25,24 @@ public class User {
     @Column(name = "role", unique = true, nullable = false)
     private String role;
 
-    // @Column(name = "password", nullable = false)
-    // private String password;
+    //
+     @Column(name = "password", nullable = false)
+     private String password;
 
     //@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     //@CollectionTable(name = "role", joinColumns = @JoinColumn(name = "id"))
     //@Enumerated(EnumType.STRING)
    // private Set<Role> roles;
 
+    public User(final String name, final String email, final String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
 
-    // public User(final String name, final String email, final String password) {
-    //   this.name = name;
-    //    this.email = email;
-    //   this.password = password;
-    // }
+    public User() {
+
+    }
 
 
 }
