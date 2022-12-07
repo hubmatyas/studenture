@@ -26,6 +26,7 @@ import java.util.Objects;
 @Setter
 @RequiredArgsConstructor
 public class Subject {
+
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,16 +57,6 @@ public class Subject {
 
     @Column(name = "description")
     private String description;
-
-    public enum Degree {
-        BC,
-        MGR
-    }
-
-    public enum Language {
-        EN,
-        CZ
-    }
 
     @Override
     public String toString() {

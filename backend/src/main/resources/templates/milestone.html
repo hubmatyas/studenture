@@ -1,0 +1,59 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="sk">
+<!doctype html>
+<meta charset="utf-8"/>
+
+
+<head>
+    <title>MILESTONES</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<p>Click <a th:href="@{/home}">here</a> to return.</p>
+
+</div>
+</tr>
+
+
+<h2>MILESTONES</h2>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Maximum</th>
+            <th>Result</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="milestone : ${list}">
+            <td th:text="${milestone.milestone}">1</td>
+            <td th:text="${milestone.maximum}"></td>
+            <td th:text="${milestone.result}"></td>
+            <td><a th:href="@{milestone/remove/{id}(id=${milestone.id})}" class="btn btn-danger btn-sm mb-3">Delete</a></td>
+            <td><a th:href="@{milestone/showFormForUpdate/{id}(id=${milestone.id})}">Edit</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <form action="#" th:action="@{/milestone-update}" th:object="${milestone}" method="post">
+        <h1>Add Milestone</h1>
+        <label>Milestones </label>
+        <select name="milestone">
+            <option th:each="milestoneOpt : ${T(net.studenture.api.entities.Milestones).values()}"
+                    th:value="${milestoneOpt}" th:text="${milestoneOpt}"></option>
+        </select>
+        <label for="maximum">Maximum </label>
+        <input type="text" th:field="*{maximum}" id="maximum" placeholder="maximum">
+        <label for="result">Result </label>
+        <input type="hidden" th:field="*{id}">
+        <input type="text" th:field="*{result}" id="result" placeholder="result">
+        <input type="submit" value="Create Milestone">
+    </form>
+</div>
+
+</body>
+
+</html>

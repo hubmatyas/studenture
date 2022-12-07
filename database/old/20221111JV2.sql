@@ -23,7 +23,7 @@ SET NAMES utf8mb4;
 # Dump of table milestone
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `milestone`;
+DROP TABLE IF EXISTS milestone_result;
 
 CREATE TABLE `milestone` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,

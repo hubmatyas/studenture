@@ -32,6 +32,7 @@ public class SubjectController {
 
     @PostMapping(value = "/subject/add")
     public String addSubject(@ModelAttribute("subject") @Valid Subject subject) {
+
         if (subject.getId() == null) {
             this.subjectService.addSubject(subject);
         } else {

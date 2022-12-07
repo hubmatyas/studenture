@@ -1,8 +1,6 @@
 package net.studenture.api.entities;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,34 +15,60 @@ import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "milestone_result")
-@Getter
-@Setter
 @RequiredArgsConstructor
 public class MilestoneResult {
+
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", columnDefinition = "ENUM('TEST', 'WORKSHOP',' EXAM')")
+    @Column(name = "milestone", columnDefinition = "ENUM('TEST', 'WORKSHOP',' EXAM')")
     @Enumerated(EnumType.STRING)
-    private Milestones milestone;
+    private Milestones milestone = Milestones.TEST;
 
-    @Column(name = "maximum", nullable = false)
+    @Column(name = "maximum")
     @Min(5)
     @Max(100)
     private int maximum = 20;
 
     @Column(name = "result")
-    @Min(1)
+    @Min(0)
     @Max(100)
-    private int result = 20;
+    private int result = 0;
 
-    public enum Milestones {
-        TEST,
-        WORKSHOP,
-        EXAM
+    public Long getId() {
+        return id;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Milestones getMilestone() {
+        return milestone;
+    }
+
+    public void setMilestone(Milestones milestone) {
+        this.milestone = milestone;
+    }
+
+    public int getMaximum() {
+        return maximum;
+    }
+
+    public void setMaximum(int maximum) {
+        this.maximum = maximum;
+    }
+
+    public int getResult() {
+        return result;
+    }
+
+    public void setResult(int result) {
+        this.result = result;
+    }
+
 
     @Override
     public String toString() {

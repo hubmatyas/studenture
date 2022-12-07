@@ -57,12 +57,20 @@
         <input type="text" th:field="*{goal}" id="goal" placeholder="goal">
         <label for="description">description </label>
         <input type="text" th:field="*{description}" id="description" placeholder="description">
-        <label for="language">language </label>
-        <input type="text" th:field="*{language}" id="language" placeholder="language">
-        <label for="degree">degree </label>
-        <input type="text" th:field="*{degree}" id="degree" placeholder="degree">
-        <label for="degree">credits </label>
+        <label>language </label>
+        <select name="language">
+            <option th:each="languageOpt : ${T(net.studenture.api.entities.Language).values()}"
+                    th:value="${languageOpt}" th:text="${languageOpt}"></option>
+        </select>
+        <label>degree </label>
+        <select name="degree">
+            <option th:each="degreeOpt : ${T(net.studenture.api.entities.Degree).values()}"
+                    th:value="${degreeOpt}" th:text="${degreeOpt}"></option>
+        </select>
+
+        <label for="credits">credits </label>
         <input type="text" th:field="*{credits}" id="credits" placeholder="credits">
+        <span>Minimalni credit 3, maximalni 20 </span>
 
         <input type="submit" value="Create Subject">
     </form>
