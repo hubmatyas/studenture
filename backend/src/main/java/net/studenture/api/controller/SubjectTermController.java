@@ -28,13 +28,13 @@ public class SubjectTermController {
     @GetMapping("/subjectterm")
     public String greeting(Model model) {
         model.addAttribute("subjectterm", new SubjectTerm());
-        List<SubjectTerm> list = subjectTermService.findAll();
-        model.addAttribute("list", list);
+        List<SubjectTerm> listSubjectTerms = subjectTermService.findAll();
+        model.addAttribute("list", listSubjectTerms);
         return "subjectterm";
     }
 
     @PostMapping(value = "/subjectterm/add")
-    public String addSubject(@ModelAttribute("subjectterm") @Valid SubjectTerm subjectTerm) {
+    public String addSubjectTerm(@ModelAttribute("subjectterm") @Valid SubjectTerm subjectTerm) {
         if (subjectTerm.getId() == null) {
             this.subjectTermService.addSubjectTerm(subjectTerm);
         } else {

@@ -9,9 +9,13 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.util.List;
 
 @Entity
 @Table(name = "milestone_result")
@@ -36,6 +40,11 @@ public class MilestoneResult {
     @Min(0)
     @Max(100)
     private int result = 0;
+
+    @ManyToOne
+    @JoinColumn(name = "term_id")
+    private SubjectTerm subjectTerm;
+
 
     public Long getId() {
         return id;
@@ -69,6 +78,13 @@ public class MilestoneResult {
         this.result = result;
     }
 
+    public SubjectTerm getSubjectTerm() {
+        return subjectTerm;
+    }
+
+    public void setSubjectTerm(SubjectTerm subjectTerm) {
+        this.subjectTerm = subjectTerm;
+    }
 
     @Override
     public String toString() {
@@ -77,6 +93,7 @@ public class MilestoneResult {
                 ", milestone=" + milestone +
                 ", maximum=" + maximum +
                 ", result=" + result +
+                ", subjectTerm=" + subjectTerm +
                 '}';
     }
 }

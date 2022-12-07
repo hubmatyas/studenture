@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -24,8 +25,6 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "subjectterm")
-@Getter
-@Setter
 @RequiredArgsConstructor
 public class SubjectTerm {
     @Id
@@ -48,17 +47,68 @@ public class SubjectTerm {
     @Enumerated(EnumType.STRING)
     private Semester semester = Semester.ZS;
 
-    @ManyToMany
-    @JoinColumn(name = "milestone_name", nullable = false)
+    @OneToMany
+    @JoinColumn(name = "term_id")
     private List<MilestoneResult> milestoneResults;
 
     @Min(0)@Max(100)
     @JoinColumn(name = "subject_result", nullable = false)
     private int subjectResult;
 
-    public enum Semester {
-        ZS,
-        LS
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getAcademicYear() {
+        return academicYear;
+    }
+
+    public void setAcademicYear(String academicYear) {
+        this.academicYear = academicYear;
+    }
+
+    public Semester getSemester() {
+        return semester;
+    }
+
+    public void setSemester(Semester semester) {
+        this.semester = semester;
+    }
+
+    public List<MilestoneResult> getMilestoneResults() {
+        return milestoneResults;
+    }
+
+    public void setMilestoneResults(List<MilestoneResult> milestoneResults) {
+        this.milestoneResults = milestoneResults;
+    }
+
+    public int getSubjectResult() {
+        return subjectResult;
+    }
+
+    public void setSubjectResult(int subjectResult) {
+        this.subjectResult = subjectResult;
     }
 
     @Override
