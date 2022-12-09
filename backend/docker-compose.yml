@@ -1,0 +1,6 @@
+services:
+  backend:
+    container_name: studenture-backend
+    image: studenture-backend.jar
+    ports:
+        - "8080:8080"
