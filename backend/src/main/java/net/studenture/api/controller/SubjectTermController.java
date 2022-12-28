@@ -26,10 +26,10 @@ public class SubjectTermController {
     private final SubjectTermServiceImpl subjectTermService;
 
     @GetMapping("/subjectterm")
-    public String greeting(Model model) {
+    public String subjectterms(Model model) {
         model.addAttribute("subjectterm", new SubjectTerm());
         List<SubjectTerm> listSubjectTerms = subjectTermService.findAll();
-        model.addAttribute("list", listSubjectTerms);
+        model.addAttribute("listSubjectTerms", listSubjectTerms);
         return "subjectterm";
     }
 

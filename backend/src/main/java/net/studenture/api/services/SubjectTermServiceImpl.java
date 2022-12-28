@@ -25,20 +25,19 @@ public class SubjectTermServiceImpl implements SubjectTermService {
     @Autowired
     private final SubjectTermRepository subjectTermRepository;
 
-    SubjectRepository subjectRepository;
-
-    public SubjectTermServiceImpl(SubjectTermRepository subjectTermRepository) {
+     public SubjectTermServiceImpl(SubjectTermRepository subjectTermRepository) {
         this.subjectTermRepository = subjectTermRepository;
     }
 
     @Override
     public void addSubjectTerm(SubjectTerm subjectTerm) {
-           this.subjectTermRepository.save(subjectTerm);
+        this.subjectTermRepository.save(subjectTerm);
     }
 
     public void addtest() {
         SubjectTerm test = new SubjectTerm();
         Subject subject = new Subject();
+
         subject.setName("Test subject");
         subject.setDegree(Degree.BC);
 

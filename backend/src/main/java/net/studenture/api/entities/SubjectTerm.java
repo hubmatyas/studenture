@@ -2,8 +2,6 @@ package net.studenture.api.entities;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import org.hibernate.Hibernate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,8 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -33,14 +29,14 @@ public class SubjectTerm {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "subjectId", nullable = false)
+    @JoinColumn(name = "subjectId")
     private Subject subject;
 
     @OneToOne
-    @JoinColumn(name = "professor_id", nullable = false)
+    @JoinColumn(name = "professor_id")
     private User user;
 
-    @Column(name = "academicYear", nullable = false)
+    @Column(name = "academicYear")
     private String academicYear = "2022/2023";
 
     @Column(name = "semester", columnDefinition = "ENUM('ZS', 'LS)")
@@ -52,7 +48,7 @@ public class SubjectTerm {
     private List<MilestoneResult> milestoneResults;
 
     @Min(0)@Max(100)
-    @JoinColumn(name = "subject_result", nullable = false)
+    @JoinColumn(name = "subject_result")
     private int subjectResult;
 
     public Long getId() {

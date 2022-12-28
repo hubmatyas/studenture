@@ -18,7 +18,7 @@ public class Application {
 
 		SubjectTermRepository subjectTermRepository = null;
 		SubjectTermServiceImpl subjectTest = new SubjectTermServiceImpl(subjectTermRepository);
-		subjectTest.addtest();
+		//subjectTest.addtest();
 
 		//logger.debug("Debugging log");
 		//logger.info("Info log");
