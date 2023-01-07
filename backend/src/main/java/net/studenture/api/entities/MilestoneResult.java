@@ -42,7 +42,7 @@ public class MilestoneResult {
     private int result = 0;
 
     @ManyToOne
-    @JoinColumn(name = "term_id")
+    @JoinColumn(name = "term_id", nullable = true)
     private SubjectTerm subjectTerm;
 
 
@@ -93,7 +93,6 @@ public class MilestoneResult {
                 ", milestone=" + milestone +
                 ", maximum=" + maximum +
                 ", result=" + result +
-                ", subjectTerm=" + subjectTerm +
                 '}';
     }
 }

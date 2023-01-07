@@ -146,10 +146,10 @@ UNLOCK TABLES;
 -- Table structure for table `subjectTerm`
 --
 
-DROP TABLE IF EXISTS `subjectTerm`;
+DROP TABLE IF EXISTS subject_term;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `subjectTerm` (
+CREATE TABLE subject_term (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `subjectId` bigint NOT NULL,
   `professorId` bigint NOT NULL,
@@ -162,9 +162,9 @@ CREATE TABLE `subjectTerm` (
 -- Dumping data for table `subjectTerm`
 --
 
-LOCK TABLES `subjectTerm` WRITE;
-/*!40000 ALTER TABLE `subjectTerm` DISABLE KEYS */;
-/*!40000 ALTER TABLE `subjectTerm` ENABLE KEYS */;
+LOCK TABLES subject_term WRITE;
+/*!40000 ALTER TABLE subject_term DISABLE KEYS */;
+/*!40000 ALTER TABLE subject_term ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

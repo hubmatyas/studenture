@@ -110,7 +110,7 @@ CREATE TABLE `subject_subjectTerm` (
 # Dump of table subjectTerm
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `subjectTerm`;
+DROP TABLE IF EXISTS subject_term;
 
 CREATE TABLE `subjectTerm` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,

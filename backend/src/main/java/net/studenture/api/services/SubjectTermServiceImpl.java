@@ -43,7 +43,6 @@ public class SubjectTermServiceImpl implements SubjectTermService {
 
         test.setAcademicYear("2022/2023");
         test.setSemester(Semester.LS);
-
         MilestoneResult milestoneResult = new MilestoneResult();
         milestoneResult.setMilestone(Milestones.TEST);
         milestoneResult.setMaximum(100);
@@ -61,6 +60,8 @@ public class SubjectTermServiceImpl implements SubjectTermService {
         test.setMilestoneResults(result);
         logger.info(test);
     }
+    /*
+     */
 
     @Override
     public Optional<SubjectTerm> findByID(Long id) {

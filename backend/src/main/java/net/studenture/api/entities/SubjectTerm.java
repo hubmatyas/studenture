@@ -1,6 +1,5 @@
 package net.studenture.api.entities;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Column;
@@ -17,10 +16,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
-@Table(name = "subjectterm")
+@Table(name = "subject_term")
 @RequiredArgsConstructor
 public class SubjectTerm {
     @Id
@@ -29,14 +27,10 @@ public class SubjectTerm {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "subjectId")
+    @JoinColumn(name = "subject_id")
     private Subject subject;
 
-    @OneToOne
-    @JoinColumn(name = "professor_id")
-    private User user;
-
-    @Column(name = "academicYear")
+    @Column(name = "academic_year")
     private String academicYear = "2022/2023";
 
     @Column(name = "semester", columnDefinition = "ENUM('ZS', 'LS)")
@@ -47,8 +41,10 @@ public class SubjectTerm {
     @JoinColumn(name = "term_id")
     private List<MilestoneResult> milestoneResults;
 
-    @Min(0)@Max(100)
-    @JoinColumn(name = "subject_result")
+
+    @Min(0)
+    @Max(100)
+    @Column(name = "result")
     private int subjectResult;
 
     public Long getId() {
@@ -65,14 +61,6 @@ public class SubjectTerm {
 
     public void setSubject(Subject subject) {
         this.subject = subject;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public String getAcademicYear() {
@@ -107,12 +95,12 @@ public class SubjectTerm {
         this.subjectResult = subjectResult;
     }
 
+
     @Override
     public String toString() {
         return "SubjectTerm{" +
                 "id=" + id +
                 ", subject=" + subject +
-                ", user=" + user +
                 ", academicYear='" + academicYear + '\'' +
                 ", semester=" + semester +
                 ", milestoneResults=" + milestoneResults +
