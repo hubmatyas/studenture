@@ -15,11 +15,6 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 
-
-		SubjectTermRepository subjectTermRepository = null;
-		SubjectTermServiceImpl subjectTest = new SubjectTermServiceImpl(subjectTermRepository);
-		subjectTest.addtest();
-
 		//logger.debug("Debugging log");
 		//logger.info("Info log");
 		//logger.warn("Hey, This is a warning!");

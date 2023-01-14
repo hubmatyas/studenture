@@ -1,9 +1,6 @@
 package net.studenture.api.entities;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import org.hibernate.Hibernate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,18 +10,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
-@Table(name = "subjectterm")
+@Table(name = "subject_term")
 @RequiredArgsConstructor
 public class SubjectTerm {
     @Id
@@ -33,26 +27,22 @@ public class SubjectTerm {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "subjectId", nullable = false)
+    @JoinColumn(name = "subject_id")
     private Subject subject;
 
-    @OneToOne
-    @JoinColumn(name = "professor_id", nullable = false)
-    private User user;
-
-    @Column(name = "academicYear", nullable = false)
+    @Column(name = "academic_year")
     private String academicYear = "2022/2023";
 
     @Column(name = "semester", columnDefinition = "ENUM('ZS', 'LS)")
     @Enumerated(EnumType.STRING)
     private Semester semester = Semester.ZS;
 
-    @OneToMany
-    @JoinColumn(name = "term_id")
+    @OneToMany(mappedBy = "subjectTerm")
     private List<MilestoneResult> milestoneResults;
 
-    @Min(0)@Max(100)
-    @JoinColumn(name = "subject_result", nullable = false)
+    @Min(0)
+    @Max(100)
+    @Column(name = "result")
     private int subjectResult;
 
     public Long getId() {
@@ -69,14 +59,6 @@ public class SubjectTerm {
 
     public void setSubject(Subject subject) {
         this.subject = subject;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public String getAcademicYear() {
@@ -116,7 +98,6 @@ public class SubjectTerm {
         return "SubjectTerm{" +
                 "id=" + id +
                 ", subject=" + subject +
-                ", user=" + user +
                 ", academicYear='" + academicYear + '\'' +
                 ", semester=" + semester +
                 ", milestoneResults=" + milestoneResults +

@@ -45,7 +45,6 @@ public class MilestoneResult {
     @JoinColumn(name = "term_id")
     private SubjectTerm subjectTerm;
 
-
     public Long getId() {
         return id;
     }
@@ -93,7 +92,6 @@ public class MilestoneResult {
                 ", milestone=" + milestone +
                 ", maximum=" + maximum +
                 ", result=" + result +
-                ", subjectTerm=" + subjectTerm +
                 '}';
     }
 }

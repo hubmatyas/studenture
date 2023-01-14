@@ -47,12 +47,6 @@ public class SubjectController {
         return "redirect:/subject";
     }
 
-    @GetMapping(value = "edit/{id}")
-    public String updateSubject(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("subject", this.subjectService.findByID(id));
-        model.addAttribute("list", this.subjectService.findAll());
-        return "redirect:/subject";
-    }
 
     @GetMapping(value = "subject/{id}")
     public String getSubject(@PathVariable("id") Long id, Model model) {
