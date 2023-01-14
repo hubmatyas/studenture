@@ -6,7 +6,7 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { Link } from "react-router-dom";
+import Link from "@mui/material/Link";
 
 const Signup = () => {
 
@@ -44,7 +44,6 @@ const Signup = () => {
             name="email"
             autoComplete="email"
             autoFocus
-            disabled
           />
           <TextField
             margin="normal"
@@ -55,7 +54,6 @@ const Signup = () => {
             type="password"
             id="password"
             autoComplete="current-password"
-            disabled
           />
           <Button
             type="submit"
@@ -69,7 +67,7 @@ const Signup = () => {
           </Button>
         </Box>
         <Typography sx={{display: "block; width: 100%;"}} component="" align="right">
-            <Link href="/" color="primary">Or Login</Link> 
+            <Link href="/" color="primary">I already have an account</Link> 
         </Typography>
 
       </Box>

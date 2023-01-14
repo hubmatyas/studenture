@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import Link from "@mui/material/Link";
 
 const Login = () => {
   return (
@@ -31,7 +32,6 @@ const Login = () => {
             name="email"
             autoComplete="email"
             autoFocus
-            disabled
           />
           <TextField
             margin="normal"
@@ -42,7 +42,6 @@ const Login = () => {
             type="password"
             id="password"
             autoComplete="current-password"
-            disabled
           />
           <Button
             href="/administrator"
@@ -69,6 +68,9 @@ const Login = () => {
             Sign as student
           </Button>
         </Box>
+        <Typography sx={{display: "block; width: 100%;"}} component="" align="right">
+            <Link href="/signup" color="primary">Or Signup</Link> 
+        </Typography>
       </Box>
     </Container>
   );
