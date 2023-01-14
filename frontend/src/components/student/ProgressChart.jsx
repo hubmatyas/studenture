@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, Typography, useTheme } from '@mui/material';
 import { PieChart, Pie, Tooltip, Cell, Legend, ResponsiveContainer } from 'recharts';
 
-const data= [
+const data = [
   { name: 'Points', value: 64 },
   { name: 'Available points', value: 36 }
 ];

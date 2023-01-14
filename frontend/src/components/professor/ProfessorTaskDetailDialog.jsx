@@ -16,6 +16,9 @@ const TASK = {
 const StudentTaskDetailDialog = ({ open, onClose, id }) => {
   // TODO: Use id for data fetching when backend is ready
 
+  // allow only numbers and control keys
+  const regexNumbersOnly = new RegExp(/^[0-9\b\x7F]+$/)
+
   const COLUMNS = [
     {
       field: 'name',
@@ -39,6 +42,12 @@ const StudentTaskDetailDialog = ({ open, onClose, id }) => {
             sx={{
               maxWidth: 200
             }}
+            onKeyDown={(event) => {
+              if (!regexNumbersOnly.test(event.key)) {
+                event.preventDefault();
+              }
+            }}
+            type='number'
             size='small'
             id="standard-basic"
             label="Points"
