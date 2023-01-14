@@ -39,6 +39,16 @@ const Signup = () => {
             margin="normal"
             required
             fullWidth
+            id="name"
+            label="Username"
+            name="name"
+            autoComplete="username"
+            autoFocus
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
             id="email"
             label="Email Address"
             name="email"
