@@ -1,9 +1,8 @@
 package net.studenture.api.services;
 
-import java.util.List;
 import java.util.Optional;
 
-import net.studenture.api.controller.body.UserCreate;
+import net.studenture.api.restcontroller.body.UserCreate;
 import net.studenture.api.entities.User;
 import net.studenture.api.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

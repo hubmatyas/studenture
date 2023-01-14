@@ -1,5 +1,7 @@
-package net.studenture.api.controller;
+package net.studenture.api.restcontroller;
 
+import java.util.List;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import net.studenture.api.entities.Subject;
 import net.studenture.api.services.SubjectServiceImpl;
@@ -10,10 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import javax.validation.Valid;
-import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Controller

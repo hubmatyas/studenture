@@ -1,4 +1,4 @@
-package net.studenture.api.controller.body;
+package net.studenture.api.restcontroller.body;
 
 import lombok.Getter;
 import lombok.Setter;

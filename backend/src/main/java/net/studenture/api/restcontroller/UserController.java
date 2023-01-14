@@ -1,10 +1,13 @@
-package net.studenture.api.controller;
+package net.studenture.api.restcontroller;
 
-import net.studenture.api.controller.body.UserCreate;
+import net.studenture.api.restcontroller.body.UserCreate;
 import net.studenture.api.entities.User;
 import net.studenture.api.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/")
