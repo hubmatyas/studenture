@@ -1,6 +1,24 @@
 services:
-  backend:
-    container_name: studenture-backend
-    image: studenture-backend.jar
-    ports:
-        - "8080:8080"
+    backend:
+        build: .
+        container_name: backend
+        ports:
+            - 9000:9000
+        environment:
+            - JAVA_OPTS=-Dspring.datasource.url=jdbc:mysql://mysql:3307/studentuure?useSSL=false
+        depends_on:
+            - mysql
+        command: ["sh", "-c", "java $JAVA_OPTS -jar studenture-backend.jar"]
+    mysql:
+        image: mysql:8
+        container_name: mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: mypassword
+            MYSQL_DATABASE: mydb
+        ports:
+            - 3307:3307
+        volumes:
+            - mysql-data:/var/lib/mysql
+
+volumes:
+    mysql-data:
