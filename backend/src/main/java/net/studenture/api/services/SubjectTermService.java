@@ -1,5 +1,6 @@
 package net.studenture.api.services;
 
+import net.studenture.api.entities.MilestoneResult;
 import net.studenture.api.entities.Subject;
 import net.studenture.api.entities.SubjectTerm;
 
@@ -18,5 +19,6 @@ public interface SubjectTermService {
     public void updateSubjectTerm(SubjectTerm subjectTerm);
 
     public List<SubjectTerm> findAll();
+
 
 }
