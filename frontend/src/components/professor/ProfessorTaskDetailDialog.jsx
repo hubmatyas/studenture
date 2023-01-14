@@ -10,6 +10,7 @@ const TASK = {
   place: 'Onsite/remote',
   deadline: '4/12/2022',
   lecturer: 'John Doe',
+  subject: 'Linear algebra',
   description: 'Excercise containing 5 tasks for matrix multiplication.'
 }
 
@@ -115,6 +116,7 @@ const StudentTaskDetailDialog = ({ open, onClose, id }) => {
           <Typography>Deadline: { TASK.deadline }</Typography>
           <Typography>Place: { TASK.place }</Typography>
           <Typography>{ TASK.description }</Typography>
+          <Typography>Subject: { TASK.subject }</Typography>
         </Box>
         <Typography variant='h6'>Students</Typography>
         <Box height={300}>

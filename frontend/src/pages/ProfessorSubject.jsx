@@ -12,12 +12,14 @@ const SUBJECT = {
       id: 1,
       name: 'Matrix multiplication excercise',
       deadline: '4/12/2022',
+      subject: 'Linear algebra',
       points: 10,
     },
     {
       id: 2,
       name: 'Final test',
       deadline: '4/12/2022',
+      subject: 'Linear algebra',
       points: 20,
     }
   ],
@@ -26,18 +28,21 @@ const SUBJECT = {
       id: 1,
       name: 'Vectors I',
       deadline: '4/12/2022',
+      subject: 'Linear algebra',
       points: 10
     },
     {
       id: 2,
       name: 'Vectors II',
       deadline: '4/12/2022',
+      subject: 'Linear algebra',
       points: 20
     },
     {
       id: 2,
       name: 'Vectors III',
       deadline: '4/12/2022',
+      subject: 'Linear algebra',
       points: 20
     },
   ]
@@ -63,6 +68,7 @@ const StudentSubject = () => {
           name={SUBJECT.name}
           lecturer={SUBJECT.lecturer}
           description={SUBJECT.description}
+          subject={SUBJECT.subject}
         />
       </Grid>
       <Grid item xs={12}>

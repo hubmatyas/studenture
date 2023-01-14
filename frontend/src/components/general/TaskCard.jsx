@@ -3,7 +3,7 @@ import { Card, Grid, Typography, IconButton, useTheme } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DialogContext from '../../context/DialogContext';
 
-const TaskCard = ({ id, name, deadline, points, pointsAchieved }) => {
+const TaskCard = ({ id, name, deadline, points, pointsAchieved, subject }) => {
 
   const { setShow, setTaskId } = useContext(DialogContext)
   
@@ -27,7 +27,7 @@ const TaskCard = ({ id, name, deadline, points, pointsAchieved }) => {
   return (
     <Card elevation={1} sx={{ marginBottom: theme.spacing(1) }}>
       <Grid container alignItems='center' px={2} py={1}>
-        <Grid container item xs={10}>
+        <Grid container item xs={10} alignItems="center">
           <Grid item xs={12} sm={6}>
             <Typography variant="body1">
               { name }
@@ -36,6 +36,11 @@ const TaskCard = ({ id, name, deadline, points, pointsAchieved }) => {
           <Grid item xs={12} sm={formattedPoints.length > 0 ? 3 : 6}>
             <Typography variant="body2" color="text.secondary">
               { deadline }
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={formattedPoints.length > 0 ? 3 : 6}>
+            <Typography variant="body2" color="text.secondary">
+              { subject }
             </Typography>
           </Grid>
           {

@@ -13,12 +13,14 @@ const SUBJECT = {
     {
       id: 1,
       name: 'Matrix multiplication excercise',
+      subject: 'Linear algebra',
       deadline: '4/12/2022',
       points: 10,
     },
     {
       id: 2,
       name: 'Final test',
+      subject: 'Linear algebra',
       deadline: '4/12/2022',
       points: 20,
     }
@@ -27,6 +29,7 @@ const SUBJECT = {
     {
       id: 1,
       name: 'Vectors I',
+      subject: 'Linear algebra',
       deadline: '4/12/2022',
       points: 10,
       achieved: 10
@@ -34,6 +37,7 @@ const SUBJECT = {
     {
       id: 2,
       name: 'Vectors II',
+      subject: 'Linear algebra',
       deadline: '4/12/2022',
       points: 20,
       achieved: 16
@@ -42,6 +46,7 @@ const SUBJECT = {
       id: 3,
       name: 'Vectors III',
       deadline: '4/12/2022',
+      subject: 'Linear algebra',
       points: 20,
       achieved: 0
     },

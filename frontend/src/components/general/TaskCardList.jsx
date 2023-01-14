@@ -8,11 +8,12 @@ const TaskCardList = ({ tasks, heading = 'Tasks' }) => {
     <Box mb={2}>
       <Typography variant='h6' mb={1}>{ heading }</Typography>
       {
-        tasks.map(({ id, name, deadline, points }) => (
+        tasks.map(({ id, name, deadline, subject, points }) => (
           <TaskCard
             key={id}
             name={name}
             deadline={deadline}
+            subject={subject}
             points={points}
             id={id}
           />
