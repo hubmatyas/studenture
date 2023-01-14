@@ -181,7 +181,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('101832492192105240247','Anna Borets','anitaborets@gmail.com',NULL,'USER',NULL),('115250436403609299919','Anna Borets','ekoveda2012@gmail.com',NULL,'USER',NULL),('123265','user','user@gmail.com','user','USER',NULL);
+INSERT INTO `user` VALUES ('101832492192105240247','Anna Borets','anitaborets@gmail.com',NULL,'USER',NULL,NULL,NULL),('115250436403609299919','Anna Borets','ekoveda2012@gmail.com',NULL,'USER',NULL,NULL,NULL),('123265','user','user@gmail.com','user','USER',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
