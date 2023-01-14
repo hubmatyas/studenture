@@ -4,6 +4,7 @@ import Professor from "./pages/Professor";
 import ProfessorSubject from "./pages/ProfessorSubject";
 import StudentSubject from "./pages/StudentSubject";
 import Administrator from "./pages/Administrator";
+import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Layout from "./components/layout/Layout";
 import './index.css'
@@ -36,6 +37,7 @@ function App() {
             />
             <Routes>
               <Route path="/" element={<Login/>}/>
+              <Route path="/signup" element={<Signup/>}/>
               <Route path="/student" element={<Student/>}/>
               <Route path="/student/subject/:id" element={<StudentSubject/>}/>            
               <Route path="/professor" element={<Professor/>}/>

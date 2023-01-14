@@ -16,7 +16,7 @@ export default function MainAppBar() {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               <Logo />
             </Typography>
-            <Button color="secondary" variant="contained">Logout</Button>
+            <Button color="secondary" variant="contained" href="/">Logout</Button>
           </Toolbar>
         </Container>
       </AppBar>
