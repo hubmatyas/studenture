@@ -3,7 +3,7 @@ import React from 'react'
 import TaskCard from './TaskCard'
 import { Box } from '@mui/system'
 
-const TaskCardList = ({ tasks, heading = 'Tasks' }) => {
+const TaskCardList = ({ tasks, heading = 'Tasks', error, success }) => {
   return (
     <Box mb={2}>
       <Typography variant='h6' mb={1}>{ heading }</Typography>
@@ -16,6 +16,8 @@ const TaskCardList = ({ tasks, heading = 'Tasks' }) => {
             subject={subject}
             points={points}
             id={id}
+            error={error}
+            success={success}
           />
         ))
       }

@@ -50,7 +50,17 @@ const SUBJECT = {
       points: 20,
       achieved: 0
     },
-  ]
+  ],
+  afterDeadline: [
+    {
+      id: 1,
+      name: 'Extra homework',
+      subject: 'Linear algebra',
+      deadline: '31/12/2022',
+      points: 10,
+      achieved: 0
+    },
+  ],
 }
 
 const StudentSubject = () => {
@@ -82,7 +92,10 @@ const StudentSubject = () => {
         <TaskCardList tasks={SUBJECT.deadlines} heading='Upcoming deadlines' />
       </Grid>
       <Grid item xs={12}>
-        <TaskCardList tasks={SUBJECT.finishedTasks} heading='Finished tasks' />
+        <TaskCardList tasks={SUBJECT.finishedTasks} heading='Finished tasks' success />
+      </Grid>
+      <Grid item xs={12}>
+        <TaskCardList tasks={SUBJECT.afterDeadline} heading='After deadline' error />
       </Grid>
     </Grid>
   )
