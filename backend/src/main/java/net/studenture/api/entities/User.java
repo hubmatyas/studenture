@@ -34,7 +34,7 @@ public class User {
     private String sessionId;
 
     @Column(name = "session_expire")
-    private Date sessionExpire;
+    private LocalDateTime sessionExpire;
 
     //@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     //@CollectionTable(name = "role", joinColumns = @JoinColumn(name = "id"))

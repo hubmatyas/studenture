@@ -1,5 +1,6 @@
 package net.studenture.api.services;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Optional;
@@ -44,7 +45,7 @@ public class UserService {
         } else {
             User user = userOptional.get();
             user.setSessionId(Session.createSessionId());
-            user.setSessionExpire(new Date());
+            user.setSessionExpire(LocalDateTime.now());
             userRepository.save(user);
             user.setPassword(null);
             return user;
@@ -61,7 +62,7 @@ public class UserService {
                 return null;
             } else {
                 user.setSessionId(Session.createSessionId());
-                user.setSessionExpire(new Date());
+                user.setSessionExpire(LocalDateTime.now());
                 userRepository.save(user);
                 user.setPassword(null);
                 return user;
