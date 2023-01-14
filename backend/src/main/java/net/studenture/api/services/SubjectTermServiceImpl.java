@@ -25,7 +25,7 @@ public class SubjectTermServiceImpl implements SubjectTermService {
     @Autowired
     private final SubjectTermRepository subjectTermRepository;
 
-     public SubjectTermServiceImpl(SubjectTermRepository subjectTermRepository) {
+    public SubjectTermServiceImpl(SubjectTermRepository subjectTermRepository) {
         this.subjectTermRepository = subjectTermRepository;
     }
 
@@ -84,6 +84,17 @@ public class SubjectTermServiceImpl implements SubjectTermService {
 
     @Override
     public void updateSubjectTerm(SubjectTerm subjectTerm) {
+        List<MilestoneResult> results = subjectTerm.getMilestoneResults();
+        int totalResult = 0;
+        for (MilestoneResult result : results) {
+            if (result.getResult() <= result.getMaximum()) {
+                totalResult = totalResult + result.getResult();
+            } else
+                throw new ArithmeticException();
+        }
+        if (totalResult <= subjectTerm.getSubjectResult()) {
+            subjectTerm.setSubjectResult(totalResult);
+        }
         this.subjectTermRepository.save(subjectTerm);
     }
 
@@ -92,6 +103,4 @@ public class SubjectTermServiceImpl implements SubjectTermService {
         logger.info(this.subjectTermRepository.findAll());
         return this.subjectTermRepository.findAll();
     }
-
-
 }
