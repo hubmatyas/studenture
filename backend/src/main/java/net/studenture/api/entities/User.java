@@ -1,5 +1,6 @@
 package net.studenture.api.entities;
 
+import java.util.Date;
 import javax.persistence.*;
 
 import lombok.Data;
@@ -26,8 +27,14 @@ public class User {
     private String role;
 
     //
-     @Column(name = "password", nullable = false)
-     private String password;
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @Column(name = "session_id")
+    private String sessionId;
+
+    @Column(name = "session_expire")
+    private Date sessionExpire;
 
     //@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     //@CollectionTable(name = "role", joinColumns = @JoinColumn(name = "id"))
