@@ -1,14 +1,25 @@
-import { Button, IconButton } from '@mui/material'
+import { Button, IconButton, useTheme } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
 import { Delete, Edit } from '@mui/icons-material'
-import React from 'react'
+import React, {useContext} from 'react'
 import { Box } from '@mui/system'
+import DialogContext from '../../context/DialogContext';
 
 const SubjectsTable = () => {
+
+  const { setShow, setTaskId } = useContext(DialogContext)
+
+  const theme = useTheme()
+
+  const displayTask = (id) => {
+    setShow(true)
+    setTaskId(id)
+  }
+
   const COLUMNS = [
     { field: 'id', headerName: 'ID'},
     { field: 'name', headerName: 'Name', flex: 1 },
-    { field: 'edit', headerName: 'Edit', width: 100, renderCell: () => <IconButton><Edit /></IconButton> },
+    { field: 'edit', headerName: 'Edit', width: 100, renderCell: () => <IconButton onClick={displayTask}><Edit /></IconButton> },
     { field: 'delete', headerName: 'Delete', width: 100, renderCell: () => <IconButton><Delete /></IconButton> },
   ]
 
