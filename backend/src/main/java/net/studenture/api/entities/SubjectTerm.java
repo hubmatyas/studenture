@@ -37,10 +37,8 @@ public class SubjectTerm {
     @Enumerated(EnumType.STRING)
     private Semester semester = Semester.ZS;
 
-    @OneToMany
-    @JoinColumn(name = "term_id")
+    @OneToMany(mappedBy = "subjectTerm")
     private List<MilestoneResult> milestoneResults;
-
 
     @Min(0)
     @Max(100)
@@ -94,7 +92,6 @@ public class SubjectTerm {
     public void setSubjectResult(int subjectResult) {
         this.subjectResult = subjectResult;
     }
-
 
     @Override
     public String toString() {

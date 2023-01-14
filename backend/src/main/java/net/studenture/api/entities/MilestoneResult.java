@@ -42,9 +42,8 @@ public class MilestoneResult {
     private int result = 0;
 
     @ManyToOne
-    @JoinColumn(name = "term_id", nullable = true)
+    @JoinColumn(name = "term_id")
     private SubjectTerm subjectTerm;
-
 
     public Long getId() {
         return id;

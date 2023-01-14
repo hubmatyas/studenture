@@ -31,8 +31,9 @@
         <td th:text="${milestone.milestone}">1</td>
         <td th:text="${milestone.maximum}"></td>
         <td th:text="${milestone.result}"></td>
+        <td th:text="${milestone.subjectTerm}"></td>
         <td><a th:href="@{milestone/remove/{id}(id=${milestone.id})}" class="btn btn-danger btn-sm mb-3">Delete</a></td>
-        <td><a th:href="@{milestone/showFormForUpdate/{id}(id=${milestone.id})}">Edit</a></td>
+
     </tr>
     </tbody>
 </table>
