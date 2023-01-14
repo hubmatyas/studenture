@@ -71,30 +71,6 @@ LOCK TABLES `recordcard` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `role`
---
-
-DROP TABLE IF EXISTS `role`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `role` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `name` varchar(55) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `role_id_uindex` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `role`
---
-
-LOCK TABLES `role` WRITE;
-/*!40000 ALTER TABLE `role` DISABLE KEYS */;
-/*!40000 ALTER TABLE `role` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `subject`
 --
 
@@ -193,7 +169,9 @@ CREATE TABLE `user` (
   `email` varchar(50) NOT NULL,
   `password` varchar(50) DEFAULT NULL,
   `role` varchar(10) DEFAULT NULL,
-  `id_int` bigint DEFAULT NULL
+  `id_int` bigint DEFAULT NULL,
+  `session_id` varchar(10) DEFAULT NULL,
+  `session_expire` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
